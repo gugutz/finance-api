@@ -27,7 +27,7 @@ class Settings(BaseSettings):
         if self.ENVIRONMENT == "prod":
             self.DATABASE_URL = (
                 f"postgresql+asyncpg://{self.PROD_DB_USER}:{self.PROD_DB_PASSWORD}@"
-                f"{self.PROD_DB_HOST}:{self.PROD_DB_PORT}/{self.PROD_DB_NAME}?sslmode=disable"
+                f"{self.PROD_DB_HOST}:{self.PROD_DB_PORT}/{self.PROD_DB_NAME}?ssl=disable"
             )
         else:
             # Mantém o banco de dados local para desenvolvimento
