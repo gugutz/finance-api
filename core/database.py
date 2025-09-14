@@ -2,12 +2,10 @@
 from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker
 from sqlalchemy.orm import declarative_base
 
-# Database URL - Connects to the PostgreSQL container
-# FORMAT: postgresql+asyncpg://USER:PASSWORD@HOST/DATABASE
-DATABASE_URL = "postgresql+asyncpg://finance_user:finance_password@localhost/finance_db"
+from core.config import settings
 
-# Create an async engine
-engine = create_async_engine(DATABASE_URL)
+# Create an async engine using the URL from settings
+engine = create_async_engine(settings.DATABASE_URL)
 
 # Create a session maker
 AsyncSessionLocal = async_sessionmaker(engine, expire_on_commit=False)
