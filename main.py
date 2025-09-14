@@ -44,7 +44,7 @@ async def startup_event():
 # --- API Routers ---
 app.include_router(users_router.router, prefix="/api")
 app.include_router(tickers_router.router) # Include the tickers router
-app.include_router(investments_router.router, prefix="/api")
+app.include_router(investments_router, prefix="/api")
 
 
 
