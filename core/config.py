@@ -26,7 +26,7 @@ class Settings(BaseSettings):
         super().__init__(**values)
         if self.ENVIRONMENT == "prod":
             self.DATABASE_URL = (
-                f"postgresql+asyncpg://{self.PROD_DB_USER}:{self.PROD_DB_PASSWORD}@"
+                f"postgresql+psycopg2://{self.PROD_DB_USER}:{self.PROD_DB_PASSWORD}@"
                 f"{self.PROD_DB_HOST}:{self.PROD_DB_PORT}/{self.PROD_DB_NAME}?sslmode=require"
             )
         else:
