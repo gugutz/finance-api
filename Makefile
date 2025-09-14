@@ -28,4 +28,4 @@ runprod: requirements install
 	uvicorn main:app 
 
 pgcli:
-	pgcli -h localhost -p 5432 -U finance_user -p finance_password
+	PGPASSWORD=finance_password pgcli --host localhost --port 5432 --user finance_user --dbname finance_db
