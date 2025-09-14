@@ -5,6 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from api.users import router as users_router
 from api.tickers import router as tickers_router # Import the new ticker router
+from api.investments import router as investments_router
 from core.database import Base, engine
 from core.config import settings # Import settings
 
@@ -43,6 +44,8 @@ async def startup_event():
 # --- API Routers ---
 app.include_router(users_router.router, prefix="/api")
 app.include_router(tickers_router.router) # Include the tickers router
+app.include_router(investments_router.router, prefix="/api")
+
 
 
 # --- Server Execution ---
