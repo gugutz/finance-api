@@ -1,1 +1,1 @@
-from . import router
+from .router import router
