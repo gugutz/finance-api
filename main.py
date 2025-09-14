@@ -31,6 +31,11 @@ async def startup_event():
     """Create database tables on startup."""
     # Diagnostic print
     print(f"[DIAGNOSTIC] Running in ENVIRONMENT: '{settings.ENVIRONMENT}'")
+    print(f"[DIAGNOSTIC] DB USER: '{settings.PROD_DB_USER}'")
+    print(f"[DIAGNOSTIC] DB HOST: '{settings.PROD_DB_HOST}'")
+    print(f"[DIAGNOSTIC] DB PORT: '{settings.PROD_DB_PORT}'")
+    print(f"[DIAGNOSTIC] DB NAME: '{settings.PROD_DB_NAME}'")
+    print(f"[DIAGNOSTIC] DB URL: '{settings.DATABASE_URL}'")
 
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
