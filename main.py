@@ -6,6 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.users import router as users_router
 from api.tickers import router as tickers_router # Import the new ticker router
 from core.database import Base, engine
+from core.config import settings # Import settings
 
 # --- App Initialization ---
 app = FastAPI(
@@ -28,6 +29,9 @@ app.add_middleware(
 @app.on_event("startup")
 async def startup_event():
     """Create database tables on startup."""
+    # Diagnostic print
+    print(f"[DIAGNOSTIC] Running in ENVIRONMENT: '{settings.ENVIRONMENT}'")
+
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
 
