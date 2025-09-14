@@ -1,4 +1,3 @@
-
 import os
 from pydantic_settings import BaseSettings
 from dotenv import load_dotenv
@@ -27,7 +26,8 @@ class Settings(BaseSettings):
         super().__init__(**values)
         if self.ENVIRONMENT == "prod":
             self.DATABASE_URL = (
-                f"postgresql+asyncpg://{self.PROD_DB_USER}:{self.PROD_DB_PASSWORD}@{self.PROD_DB_HOST}:{self.PROD_DB_PORT}/{self.PROD_DB_NAME}"
+                f"postgresql+asyncpg://{self.PROD_DB_USER}:{self.PROD_DB_PASSWORD}@"
+                f"{self.PROD_DB_HOST}:{self.PROD_DB_PORT}/{self.PROD_DB_NAME}?pool_mode=session"
             )
         else:
             # Mantém o banco de dados local para desenvolvimento
@@ -35,4 +35,3 @@ class Settings(BaseSettings):
 
 # Instância única das configurações
 settings = Settings()
-
