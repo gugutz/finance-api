@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from api.users import router as users_router
 from api.tickers import router as tickers_router # Import the new ticker router
-from api.investments import router as investments_router
+from api.investments.router import router as investments_router
 from core.database import Base, engine
 from core.config import settings # Import settings
 
